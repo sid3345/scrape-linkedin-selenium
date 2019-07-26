@@ -28,7 +28,6 @@ for id in lines:
     ''' Database tables: personal_info, linkedin_job, user_education_linkedin, user_skills_linkedin, accomplishments_linkedin, user_interests '''
 
     output = open("..path/output_file.json", "r", encoding="utf8")
-    #data = json.load(json.dump(output))
 
     for line in output:
         #print(line)
@@ -65,9 +64,7 @@ for id in lines:
         #print(jobs)
 
         for count1 in range(len(experiences["jobs"])):
-            #print(jobs_str)
-            #jobs=eval(jobs_str)
-        #print(jobs)
+            
             jobs=jobs_lis[count1]
             #print(jobs)
             title=jobs["title"]
@@ -96,8 +93,6 @@ for id in lines:
                             print (title1, " is in file")
 
             #job_dic={"name":name,"title":title,"company":company,"job_date_range":job_date_range,"job_location":job_location,"job_description":job_description}
-            #print(education_dic)
-            #job_complete={count1:job_dic}
 
             if job_duration<=6:
                 level='beginner'
@@ -161,7 +156,6 @@ for id in lines:
             #print('skills_lis ',type(skills_lis))
             skills=skills_lis[count3]
             #print('count',count3,skills)
-            #print('\n')
             #print('skills ',type(skills))
             #print(skills)
             skill_name=skills["name"]
