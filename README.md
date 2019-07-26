@@ -117,6 +117,30 @@ Examples:
 -   Get only the skills of Austin O'Boyle: `$ scrapeli --user=austinoboyle -a skills`
 -   Parse stored html profile and save json output: `$ scrapeli -i /path/file.html -o output.json`
 
+### Run python file to scrape profiles in loop
+
+1.  Run file “script to scrape from urls.py” to scrape user id’s continuously in a loop. User id’s to scrape are stored in a file “urls.txt”.
+
+2.  Add the user id’s required, to the file “urls.txt” to scrape those profiles.
+
+3. Change required paths of "urls.txt" and "output.json".
+
+4.  The output is stored in “output.json” temporarily & then the file contents are stored in variables.
+
+5.  The variables are then inserted into the database.	
+
+6.  Change the variables “url_file” & “output” to “urls.txt” & “output.json” directory locations respectively in “script to scrape from urls.py”.
+
+
+Database tables: columns
+•	personal_info :name, current_company, location, school, summary, email, phone, website 
+•	linkedin_job: name,title,company,job_date_range,job_location,job_description,duration,level 
+•	user_education_linkedin: name,college,degree,grades,field_of_study,college_date_range
+•	user_skills_linkedin: name,skills, skill_endorsements,level
+•	accomplishments_linkedin: name,publications,certifications,patents,courses,projects,languages,test_scores
+•	user_interests: name,interests
+
+
 ### Python Package
 
 #### Profiles
