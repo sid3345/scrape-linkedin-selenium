@@ -132,12 +132,17 @@ Examples:
 6.  Change the variables “url_file” & “output” to “urls.txt” & “output.json” directory locations respectively in “script to scrape from urls.py”.
 
 
-Database tables: columns
+### Database tables: columns
 •	personal_info :name, current_company, location, school, summary, email, phone, website 
+
 •	linkedin_job: name,title,company,job_date_range,job_location,job_description,duration,level 
+
 •	user_education_linkedin: name,college,degree,grades,field_of_study,college_date_range
+
 •	user_skills_linkedin: name,skills, skill_endorsements,level
+
 •	accomplishments_linkedin: name,publications,certifications,patents,courses,projects,languages,test_scores
+
 •	user_interests: name,interests
 
 
