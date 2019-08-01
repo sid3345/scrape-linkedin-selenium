@@ -70,14 +70,12 @@ for id in lines:
             title=jobs["title"]
             #print('title ',type(title))
             company=jobs["company"]
-            #print('company ',type(company))
+   
             job_date_range=jobs["date_range"]
             job_location=jobs["location"]
             job_description=jobs["description"]
 
-            #global mon
             job_duration=duration(job_date_range)
-            #print(job_duration,' months experience in', title)
 
             reader = csv.reader(domain, delimiter=',')
             #print('title ',title)
@@ -91,8 +89,6 @@ for id in lines:
                         #print('field ',field)
                         if field == title1:
                             print (title1, " is in file")
-
-            #job_dic={"name":name,"title":title,"company":company,"job_date_range":job_date_range,"job_location":job_location,"job_description":job_description}
 
             if job_duration<=6:
                 level='beginner'
@@ -110,60 +106,40 @@ for id in lines:
                 level='master'            
 
             query2="INSERT INTO linkedin_job (name,title,company,job_date_range,job_location,job_description,duration,level) VALUES (%s,%s,%s,%s,%s,%s,%s,%s)"
-            #val=(str(job_complete),)
+     
             val= (name,str(title), str(company),str(job_date_range), str(job_location),str(job_description),job_duration,level)
             cursor.execute(query2,val)
             conn.commit()
-
-        #print(i)
-        #education_lis=i['education']
+            
         education_lis=experiences["education"]
         
         for count2 in range(len(experiences["education"])):
             education=education_lis[count2]
-            #print('count ',count2,education)
-            #print('\n')
-            #print('education ',type(education))
-            #print(education["name"])
+   
             college=education["name"]
-            #print(type(college))
-            #print(college)
+    
             degree=education["degree"]
-            #print(degree)
-            grades=education["grades"]
-            #print(grades)
-            field_of_study=education["field_of_study"]
-            #print(field_of_study)
-            college_date_range=education["date_range"]
-            #print(college_date_range)
 
-            #education_dic={"college":college,"degree":degree,"grades":grades,"field_of_study":field_of_study,"college_date_range":college_date_range}
-            #print(education_dic)
-            #education_complete={count2:education_dic}
-            #print(str(education_complete))
+            grades=education["grades"]
+
+            field_of_study=education["field_of_study"]
+
+            college_date_range=education["date_range"]
 
             query3="INSERT INTO user_education_linkedin(name,college,degree,grades,field_of_study,college_date_range) VALUES (%s,%s,%s,%s,%s,%s)"
-            #val=(str(education_complete),)
+ 
             val= (name,str(college), str(degree),str(grades),str(field_of_study), str(college_date_range),)
             cursor.execute(query3,val)
             conn.commit()
 
         skills_lis=i["skills"]
-        #print(skills)
+
         for count3 in range(len(i["skills"])):
 
-            #print('count',count3,skills_lis)
-            #print('skills_lis ',type(skills_lis))
             skills=skills_lis[count3]
-            #print('count',count3,skills)
-            #print('skills ',type(skills))
-            #print(skills)
             skill_name=skills["name"]
             skill_endorsement=skills["endorsements"]
 
-            #skill_dic={"skill_name":skill_name,"skill_endorsement":skill_endorsement}
-            #print(education_dic)
-            #skill_complete={count3:skill_dic}
             level=""
 
             if int(skill_endorsement)<=1:
@@ -188,12 +164,6 @@ for id in lines:
         for count4 in range(len(publications_lis)):
             publications=publications_lis[count4]
 
-            #publications_names=publications["publications"]
-
-            #publications_dic={"publications":publications}
-            #print(education_dic)
-            #publications_complete={count4:publications_dic}
-
             query5="INSERT INTO accomplishments_linkedin (name,publications) VALUES (%s,%s)"
             val= (name,str(publications),)
             cursor.execute(query5,val)
@@ -202,9 +172,6 @@ for id in lines:
         certifications_lis=accomplishments["certifications"]
         for count5 in range(len(certifications_lis)):
             certifications=certifications_lis[count5]
-
-            #certifications_dic={"certifications":certifications}
-            #certifications_complete={count5:certifications_dic} 
 
             query6="INSERT INTO accomplishments_linkedin (name,certifications) VALUES (%s,%s)"
             val= (name,str(certifications),)
@@ -215,9 +182,6 @@ for id in lines:
         for count6 in range(len(patents_lis)):
             patent_names=patents_lis[count6]
 
-            #patent_dic={" patent": patent_names}
-            #patent_complete={count6: patent_dic}
-
             query7="INSERT INTO accomplishments_linkedin (name,patents) VALUES (%s,%s)"
             val= (name,str(patent_names),)
             cursor.execute(query7,val)
@@ -227,10 +191,6 @@ for id in lines:
         for count7 in range(len(course_lis)):
             course_names=course_lis[count7] 
 
-            #course_dic={"courses ": course_names}
-            #course_complete={count7: course_dic}
-
-            #print("courses",course_names)
             query8="INSERT INTO accomplishments_linkedin (name,courses) VALUES (%s,%s)"
             val= (name,str(course_names),)
             cursor.execute(query8,val)
@@ -239,10 +199,6 @@ for id in lines:
         project_lis=accomplishments["projects"]
         for count8 in range(len(project_lis)):
             project_names=project_lis[count8]
-            #print(project_names)
-
-            #project_dic={"project ": project_names}
-            #project_complete={count8: project_dic}
 
             query9="INSERT INTO accomplishments_linkedin (name,projects) VALUES (%s,%s)"
             val= (name,str(project_names),)
@@ -253,9 +209,6 @@ for id in lines:
         for count9 in range(len(language_lis)):
             language_names=language_lis[count9]
 
-            #language_dic={"language ": language_names}
-            #language_complete={count9:language_dic}
-
             query10="INSERT INTO accomplishments_linkedin (name,languages) VALUES (%s,%s)"
             val= (name,str(language_names),)
             cursor.execute(query10,val)
@@ -264,9 +217,6 @@ for id in lines:
         test_lis=accomplishments["test_scores"]
         for count10 in range(len(test_lis)):
             test_names=test_lis[count10]  
-            
-            #test_dic={"test ": test_names}
-            #test_complete={count10:test_dic}
 
             query11="INSERT INTO accomplishments_linkedin (name,test_scores) VALUES (%s,%s)"
             val= (name,str(test_names),)
@@ -276,19 +226,13 @@ for id in lines:
         interest_lis=i["interests"]
         for count11 in range(len(i["interests"])):
 
-            #print(interest_lis)
             interest=interest_lis[count11]
-            #print(interest)       
-
-            #interest_dic={"interest ": interest}
-            #interest_complete={count11:interest_dic}
 
             query12="INSERT INTO user_interests_linkedin (name,interests) VALUES (%s,%s)"
             val= (name,str(interest),)
             cursor.execute(query12,val)
             conn.commit()
 
-        #print(name, location,school,project_names,skill_name,skill_endorsement,college)
         output.close()
         print("database storage ends")
 
